@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Flip — Flip Your Food, Not Your Health</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Background decoration -->
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-orb orb-three"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">↻</span>
+            <span>Food<span class="logo-accent">Flip</span></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#foods">Foods</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <button class="nav-button" onclick="scrollToSearch()">
+            Start Flipping
+        </button>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="small-badge">
+                    <span class="spark">✦</span>
+                    HEALTHY CRAVINGS, REIMAGINED
+                </div>
+
+                <h1>
+                    Flip Your Food,
+                    <span>Not Your Health.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Craving your favourite fast food?
+                    Don't fight the craving — <strong>flip it.</strong>
+                    Discover healthier versions that keep the taste,
+                    fun and satisfaction alive.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="primary-button" onclick="scrollToSearch()">
+                        Flip My Food
+                        <span>↗</span>
+                    </button>
+
+                    <button class="secondary-button" onclick="scrollToHowItWorks()">
+                        How It Works
+                        <span>↓</span>
+                    </button>
+                </div>
+
+                <div class="hero-stats">
+                    <div>
+                        <strong>20+</strong>
+                        <span>Food Flips</span>
+                    </div>
+
+                    <div class="stat-divider"></div>
+
+                    <div>
+                        <strong>100%</strong>
+                        <span>Vegetarian</span>
+                    </div>
+
+                    <div class="stat-divider"></div>
+
+                    <div>
+                        <strong>0</strong>
+                        <span>Compromise</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- HERO FOOD VISUAL -->
+            <div class="hero-visual">
+
+                <div class="floating-card card-top">
+                    <span>🥦</span>
+                    <div>
+                        <strong>Healthier</strong>
+                        <small>Same craving</small>
+                    </div>
+                </div>
+
+                <div class="food-circle">
+
+                    <div class="food-ring ring-one"></div>
+                    <div class="food-ring ring-two"></div>
+
+                    <div class="food-main">
+                        🍔
+                    </div>
+
+                    <div class="flip-arrow">
+                        ↻
+                    </div>
+
+                    <div class="food-healthy">
+                        🥗
+                    </div>
+
+                </div>
+
+                <div class="floating-card card-bottom">
+                    <span>✨</span>
+                    <div>
+                        <strong>Food Flipped!</strong>
+                        <small>Guilt = optional</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH SECTION -->
+        <section class="search-section" id="search">
+
+            <div class="section-label">
+                STEP 01
+            </div>
+
+            <h2>
+                What's your <span>craving?</span>
+            </h2>
+
+            <p>
+                Tell us what fast food is calling your name.
+                We'll show you how to flip it.
+            </p>
+
+            <div class="search-box-wrapper">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="text"
+                        id="foodInput"
+                        placeholder="Try pizza, burger, fries..."
+                        autocomplete="off"
+                    >
+
+                    <button onclick="flipFood()">
+                        FLIP IT
+                        <span>↻</span>
+                    </button>
+
+                </div>
+
+                <div id="suggestions" class="suggestions"></div>
+
+            </div>
+
+
+            <div class="popular-foods">
+
+                <span>Popular cravings:</span>
+
+                <button onclick="selectFood('pizza')">🍕 Pizza</button>
+                <button onclick="selectFood('burger')">🍔 Burger</button>
+                <button onclick="selectFood('fries')">🍟 Fries</button>
+                <button onclick="selectFood('momos')">🥟 Momos</button>
+                <button onclick="selectFood('pasta')">🍝 Pasta</button>
+                <button onclick="selectFood('noodles')">🍜 Noodles</button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULT SECTION -->
+        <section id="resultSection" class="result-section hidden">
+
+            <div class="result-header">
+
+                <div>
+                    <div class="section-label">YOUR FOOD FLIP</div>
+
+                    <h2>
+                        Meet your <span>healthier craving.</span>
+                    </h2>
+                </div>
+
+                <button class="restart-button" onclick="resetFood()">
+                    ↻ Flip Another
+                </button>
+
+            </div>
+
+
+            <div class="flip-card">
+
+                <div class="original-food">
+
+                    <div class="food-label">
+                        YOU CRAVED
+                    </div>
+
+                    <div class="big-food-icon" id="originalIcon">
+                        🍔
+                    </div>
+
+                    <h3 id="originalFoodName">
+                        Burger
+                    </h3>
+
+                    <p id="originalDescription">
+                        Your favourite comfort food.
+                    </p>
+
+                </div>
+
+
+                <div class="big-flip-arrow">
+                    ↻
+                </div>
+
+
+                <div class="healthy-food">
+
+                    <div class="food-label healthy-label">
+                        WE FLIPPED IT
+                    </div>
+
+                    <div class="big-food-icon" id="healthyIcon">
+                        🥗
+                    </div>
+
+                    <h3 id="healthyFoodName">
+                        Healthy Veggie Burger
+                    </h3>
+
+                    <p id="healthyDescription">
+                        Same delicious experience, smarter ingredients.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- NUTRITION -->
+            <div class="nutrition-grid">
+
+                <div class="nutrition-card">
+                    <span class="nutrition-icon">🔥</span>
+                    <div>
+                        <strong id="calories">350</strong>
+                        <small>Calories</small>
+                    </div>
+                </div>
+
+                <div class="nutrition-card">
+                    <span class="nutrition-icon">💪</span>
+                    <div>
+                        <strong id="protein">18g</strong>
+                        <small>Protein</small>
+                    </div>
+                </div>
+
+                <div class="nutrition-card">
+                    <span class="nutrition-icon">⏱️</span>
+                    <div>
+                        <strong id="time">25 min</strong>
+                        <small>Prep Time</small>
+                    </div>
+                </div>
+
+                <div class="nutrition-card">
+                    <span class="nutrition-icon">⭐</span>
+                    <div>
+                        <strong id="difficulty">Easy</strong>
+                        <small>Difficulty</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="recipe-navigation">
+
+                <div class="progress-line">
+                    <div class="progress-item active">
+                        <div class="progress-number">01</div>
+                        <span>Ingredients</span>
+                    </div>
+
+                    <div class="progress-bar"></div>
+
+                    <div class="progress-item">
+                        <div class="progress-number">02</div>
+                        <span>Recipe</span>
+                    </div>
+
+                    <div class="progress-bar"></div>
+
+                    <div class="progress-item">
+                        <div class="progress-number">03</div>
+                        <span>Tutorial</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- INGREDIENTS -->
+            <div class="content-panel" id="ingredientsPanel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="step-tag">STEP 01</span>
+                        <h3>Gather your ingredients</h3>
+                        <p>Everything you need for your healthy flip.</p>
+                    </div>
+
+                    <span class="panel-icon">🛒</span>
+
+                </div>
+
+                <div id="ingredientsList" class="ingredients-grid"></div>
+
+                <button class="next-button" onclick="showRecipe()">
+                    Continue to Recipe
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <!-- RECIPE -->
+            <div class="content-panel hidden" id="recipePanel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="step-tag">STEP 02</span>
+                        <h3>Let's make it!</h3>
+                        <p>Follow these simple steps.</p>
+                    </div>
+
+                    <span class="panel-icon">👨‍🍳</span>
+
+                </div>
+
+                <div id="recipeSteps" class="recipe-steps"></div>
+
+                <div class="chef-tip">
+                    <span>💡</span>
+                    <div>
+                        <strong>Food Flip Tip</strong>
+                        <p id="chefTip">
+                            Don't rush the cooking process.
+                            Good food deserves a little patience.
+                        </p>
+                    </div>
+                </div>
+
+                <button class="next-button" onclick="showTutorial()">
+                    Watch Tutorial
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <!-- VIDEO -->
+            <div class="content-panel hidden" id="tutorialPanel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="step-tag">STEP 03</span>
+                        <h3>Watch it come to life</h3>
+                        <p>See how to make your food flip.</p>
+                    </div>
+
+                    <span class="panel-icon">▶️</span>
+
+                </div>
+
+                <div class="video-container">
+
+                    <iframe
+                        id="youtubeVideo"
+                        src=""
+                        title="Food Flip Tutorial"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+                <div class="video-info">
+
+                    <div>
+                        <span>🎬</span>
+                        <div>
+                            <strong id="videoTitle">
+                                Healthy Food Tutorial
+                            </strong>
+                            <small>YouTube Tutorial</small>
+                        </div>
+                    </div>
+
+                    <a
+                        id="youtubeLink"
+                        href="#"
+                        target="_blank"
+                        class="youtube-button">
+                        Watch on YouTube ↗
+                    </a>
+
+                </div>
+
+                <div class="final-message">
+                    <span>🎉</span>
+                    <h3>You just flipped your food!</h3>
+                    <p>
+                        Same craving. Smarter choice.
+                        That's the Food Flip way.
+                    </p>
+                </div>
+
+                <button class="flip-again-button" onclick="resetFood()">
+                    ↻ Flip Another Food
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="how-section" id="how-it-works">
+
+            <div class="section-label">HOW IT WORKS</div>
+
+            <h2>
+                Your craving.
+                <span>Our flip.</span>
+            </h2>
+
+            <p class="section-description">
+                Three simple steps between you and a healthier version
+                of the food you already love.
+            </p>
+
+
+            <div class="steps-grid">
+
+                <div class="how-card">
+
+                    <div class="how-number">01</div>
+
+                    <div class="how-icon">🍔</div>
+
+                    <h3>Tell us your craving</h3>
+
+                    <p>
+                        Pizza? Burger? Fries? Whatever your taste buds
+                        are asking for, just type it in.
+                    </p>
+
+                </div>
+
+
+                <div class="how-card featured">
+
+                    <div class="how-number">02</div>
+
+                    <div class="how-icon">🔄</div>
+
+                    <h3>We flip it</h3>
+
+                    <p>
+                        We transform your favourite fast food into a
+                        healthier vegetarian version.
+                    </p>
+
+                </div>
+
+
+                <div class="how-card">
+
+                    <div class="how-number">03</div>
+
+                    <div class="how-icon">🥗</div>
+
+                    <h3>You make it</h3>
+
+                    <p>
+                        Get ingredients, step-by-step instructions and
+                        a video tutorial to make it yourself.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOD COLLECTION -->
+        <section class="foods-section" id="foods">
+
+            <div class="section-label">THE FOOD FLIP COLLECTION</div>
+
+            <h2>
+                What can you <span>flip?</span>
+            </h2>
+
+            <p>
+                We've got your cravings covered.
+            </p>
+
+
+            <div class="food-collection">
+
+                <button onclick="selectFood('pizza')">🍕<span>Pizza</span></button>
+                <button onclick="selectFood('burger')">🍔<span>Burger</span></button>
+                <button onclick="selectFood('fries')">🍟<span>Fries</span></button>
+                <button onclick="selectFood('momos')">🥟<span>Momos</span></button>
+                <button onclick="selectFood('pasta')">🍝<span>Pasta</span></button>
+                <button onclick="selectFood('noodles')">🍜<span>Noodles</span></button>
+                <button onclick="selectFood('sandwich')">🥪<span>Sandwich</span></button>
+                <button onclick="selectFood('tacos')">🌮<span>Tacos</span></button>
+                <button onclick="selectFood('wrap')">🌯<span>Wrap</span></button>
+                <button onclick="selectFood('nachos')">🧀<span>Nachos</span></button>
+                <button onclick="selectFood('quesadilla')">🫓<span>Quesadilla</span></button>
+                <button onclick="selectFood('springroll')">🥢<span>Spring Rolls</span></button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+
+            <div class="contact-intro">
+                <div class="section-label">LET'S STAY CONNECTED</div>
+
+                <h2>
+                    Have a craving to <span>share?</span>
+                </h2>
+
+                <p>
+                    Have a question, a recipe idea, or a food flip you would love to see?
+                    Reach out anytime — we would love to hear from you.
+                </p>
+            </div>
+
+            <div class="contact-actions">
+                <a class="contact-card whatsapp-card" href="https://wa.me/919350529818" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp at 9350529818">
+                    <span class="contact-icon">💬</span>
+                    <span class="contact-copy">
+                        <small>WHATSAPP</small>
+                        <strong>Chat with us</strong>
+                        <em>93505 29818</em>
+                    </span>
+                    <span class="contact-arrow">↗</span>
+                </a>
+
+                <a class="contact-card call-card" href="tel:+919350529818" aria-label="Call 9350529818">
+                    <span class="contact-icon">☎</span>
+                    <span class="contact-copy">
+                        <small>CALL US</small>
+                        <strong>Let’s talk</strong>
+                        <em>93505 29818</em>
+                    </span>
+                    <span class="contact-arrow">↗</span>
+                </a>
+
+                <a class="contact-card email-card" href="mailto:aayushidhamija15@gmail.com" aria-label="Email aayushidhamija15@gmail.com">
+                    <span class="contact-icon">✉</span>
+                    <span class="contact-copy">
+                        <small>EMAIL</small>
+                        <strong>Send a message</strong>
+                        <em>aayushidhamija15@gmail.com</em>
+                    </span>
+                    <span class="contact-arrow">↗</span>
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- QUOTE -->
+        <section class="quote-section">
+
+            <div class="quote-mark">“</div>
+
+            <blockquote>
+                Healthy doesn't mean boring.
+                <span>It means flipping the way you think about food.</span>
+            </blockquote>
+
+            <div class="quote-line"></div>
+
+            <p>THE FOOD FLIP PHILOSOPHY</p>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">
+            <span class="logo-icon">↻</span>
+            Food<span>Flip</span>
+        </div>
+
+        <p>
+            Flip your food, not your health. 💚
+        </p>
+
+        <div class="footer-bottom">
+            <span>© 2026 Food Flip</span>
+            <span>Made with 🥗 & ❤️</span>
+        </div>
+
+    </footer>
+
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <span>✨</span>
+        <p id="toastMessage">Food flipped!</p>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
